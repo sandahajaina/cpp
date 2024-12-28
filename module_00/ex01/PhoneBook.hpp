@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:00:28 by sranaivo          #+#    #+#             */
-/*   Updated: 2024/12/27 16:28:56 by sranaivo         ###   ########.fr       */
+/*   Updated: 2024/12/28 17:02:37 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,16 @@ class PhoneBook
     private:
         Contact _contact[8];
         int     _index;
+        int     _size;
         
     public:
-        PhoneBook(/* args */);
+        PhoneBook();
         ~PhoneBook();
-        void    add_contact();
-        void    search_contact();
+        void add_contact(std::string data[5]);
+        void search_contact();
+        int  get_oldest_contact();
+        int  get_latest_contact();
+        void print_contacts();
 };
 
 #endif

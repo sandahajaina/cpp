@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 13:02:17 by sranaivo          #+#    #+#             */
-/*   Updated: 2024/12/27 14:40:43 by sranaivo         ###   ########.fr       */
+/*   Updated: 2024/12/28 17:10:57 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 #include <iostream>
 
 Contact::Contact (
+    int         id,
     std::string first_name,
     std::string last_name,
     std::string nick_name,
     std::string phone_number,
     std::string secret
-) : first_name(first_name),
+) : id(id),
+    first_name(first_name),
     last_name(last_name),
     nick_name(nick_name),
     phone_number(phone_number),
@@ -31,6 +33,11 @@ Contact::Contact (
     // std::cout << this->phone_number << std::endl;
     // std::cout << this->secret << std::endl;
     return ;
+}
+
+int Contact::get_id(void) const
+{
+    return (this->id);
 }
 
 const std::string& Contact::get_first_name(void) const
@@ -58,6 +65,11 @@ const std::string& Contact::get_secret(void) const
     return (this->secret);
 }
 
+void    Contact::set_id(int id)
+{
+    this->id = id;
+}
+
 void    Contact::set_first_name(std::string first_name)
 {
     this->first_name = first_name;
@@ -83,12 +95,6 @@ void    Contact::set_secret(std::string secret)
     this->secret = secret;
 }
 
-Contact::Contact(void)
-{
-    return ;
-}
+Contact::Contact() {}
 
-Contact::~Contact(void)
-{
-    return ;
-}
+Contact::~Contact(void) {}
