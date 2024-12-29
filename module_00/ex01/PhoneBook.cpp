@@ -6,13 +6,14 @@
 /*   By: sranaivo <sranaivo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 13:33:30 by sranaivo          #+#    #+#             */
-/*   Updated: 2024/12/28 17:17:37 by sranaivo         ###   ########.fr       */
+/*   Updated: 2024/12/30 01:11:38 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <iostream>
 #include <stdio.h>
+#include <iomanip>
 
 void    PhoneBook::add_contact(std::string data[5])
 {
@@ -82,6 +83,52 @@ void PhoneBook::print_contacts()
     {
         std::cout << this->_contact[i].get_id() << " : " << this->_contact[i].get_first_name() << std::endl;
         i++;
+    }
+}
+
+void PhoneBook::search_contact()
+{
+    this->display_contacts();
+}
+
+std::string PhoneBook::format_text(const std::string& text, size_t width)
+{
+    std::string formatted = text;
+    if (formatted.length() > width) {
+        formatted = formatted.substr(0, width - 1) + ".";
+    }
+    return formatted;
+}
+
+void PhoneBook::display_contacts()
+{
+    if (!(this->_size))
+        return;
+    int old = this->get_oldest_contact();
+    
+    std::cout << std::setw(10) << "Index" << "|"
+              << std::setw(10) << "First name" << "|"
+              << std::setw(10) << "Last name" << "|"
+              << std::setw(10) << "Nick name" << std::endl;
+    std::cout << "     --------------------------------------" << std::endl;
+    
+    for (int i = 0; i < this->_size; i++)
+    {
+        for (int j = 0; j < this->_size; j++)
+        {
+            if (this->_contact[j].get_id() == old)
+            {
+                std::cout << std::setw(10) << this->_contact[j].get_id() << "|"
+                  << std::setw(10)
+                  << format_text(this->_contact[j].get_first_name(), 10) << "|"
+                  << std::setw(10)
+                  << format_text(this->_contact[j].get_last_name(), 10) << "|"
+                  << std::setw(10)
+                  << format_text(this->_contact[j].get_nick_name(), 10) << std::endl;
+                break;
+            }
+        }
+        old++;
     }
 }
 

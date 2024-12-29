@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:00:28 by sranaivo          #+#    #+#             */
-/*   Updated: 2024/12/28 17:02:37 by sranaivo         ###   ########.fr       */
+/*   Updated: 2024/12/30 01:11:53 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ class PhoneBook
         int  get_oldest_contact();
         int  get_latest_contact();
         void print_contacts();
+        void display_contacts();
+        std::string format_text(const std::string& text, size_t width);
 };
 
 #endif
