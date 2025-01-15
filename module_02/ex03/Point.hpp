@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 18:08:40 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/15 00:31:32 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/01/15 13:18:04 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ class Point
 };
 
 std::ostream& operator<<(std::ostream& os, const Point& p);
+
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif

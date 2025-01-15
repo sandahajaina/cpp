@@ -1,5 +1,5 @@
 NAME = fixed
-SRCS = Fixed.cpp Point.cpp main.cpp
+SRCS = Fixed.cpp Point.cpp  bsp.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
