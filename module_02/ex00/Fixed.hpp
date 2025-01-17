@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:58:25 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/13 16:08:42 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/01/16 12:53:20 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Fixed
 
 	private:
 		int _rawBits;
-		static const int fractionalBits = 8;
+		static const int _fractionalBits = 8;
 };
 
 #endif /* *********************************************************** FIXED_H */

@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:58:25 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/14 17:41:41 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/01/16 12:53:37 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ class Fixed
 
 	private:
 		int _rawBits;
-		static const int fractionalBits = 8;
+		static const int _fractionalBits = 8;
 };
 
 std::ostream &			operator<<( std::ostream & os, Fixed const & i );

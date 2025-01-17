@@ -6,56 +6,35 @@
 /*   By: sranaivo <sranaivo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:57:39 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/15 17:30:18 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/01/16 14:30:50 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-// static Fixed triangleArea(Point const& p1, Point const& p2, Point const& p3)
-// {
-//     return Fixed(
-//         ((p1.getX().toFloat() * (p2.getY().toFloat() - p3.getY().toFloat())) +
-//          (p2.getX().toFloat() * (p3.getY().toFloat() - p1.getY().toFloat())) +
-//          (p3.getX().toFloat() * (p1.getY().toFloat() - p2.getY().toFloat()))) /
-//         2.0f
-//     ).toFloat();
-// }
 
-// bool bsp( Point const a, Point const b, Point const c, Point const point)
-// {
-//     Fixed totalArea = triangleArea(a, b, c);
+// Area = |x1(y2-y3) + x2(y3-y1) + x3(y1-y2)| / 2
+static Fixed triangleArea(Point const& p1, Point const& p2, Point const& p3) {
+    Fixed result = 
+        (p1.getX() * (p2.getY() - p3.getY())) +
+        (p2.getX() * (p3.getY() - p1.getY())) +
+        (p3.getX() * (p1.getY() - p2.getY()));
 
-//     Fixed area1 = triangleArea(point, b, c);
-//     Fixed area2 = triangleArea(a, point, c);
-//     Fixed area3 = triangleArea(a, b, point);
-
-    // std::cout << "1 :" << area1 << std::endl;
-    // std::cout << "2 :" << area2 << std::endl;
-    // std::cout << "3 :" << area3 << std::endl;
-//     if (area1 == 0 || area2 == 0 || area3 == 0) {
-//         return false;
-//     }
-
-//     return (true);
-// }
-
-static Fixed	sign(Point a, Point b, Point c)
-{
-	return (a.getX() - c.getX()) * (b.getY() - c.getY()) - (b.getX() - c.getX()) * (a.getY() - c.getY());
+    return result < 0 ? -result / Fixed(2) : result / Fixed(2);
 }
 
-bool	bsp(const Point a, const Point b, const Point c, const Point point)
+bool bsp(Point const a, Point const b, Point const c, Point const point)
 {
-	Fixed	d1, d2, d3;
-	bool	has_neg, has_pos;
+    Fixed totalArea = triangleArea(a, b, c);
 
-	d1 = sign(point, a, b);
-	d2 = sign(point, b, c);
-	d3 = sign(point, c, a);
+    Fixed area1 = triangleArea(point, b, c);
+    Fixed area2 = triangleArea(a, point, c);
+    Fixed area3 = triangleArea(a, b, point);
 
-	has_neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
-	has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
+    if (area1 == Fixed(0) || area2 == Fixed(0) || area3 == Fixed(0)) {
+        return false;
+    }
 
-	return !(has_neg && has_pos);
+    Fixed sumOfAreas = area1 + area2 + area3;
+    return (sumOfAreas >= totalArea && sumOfAreas <= totalArea);
 }
