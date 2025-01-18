@@ -6,41 +6,23 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:51:05 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/18 10:44:25 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/01/18 17:54:37 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main()
 {
-    ClapTrap andria;
-    ClapTrap saotra("Saotra");
+    ScavTrap a("saotra");
 
-    std::cout << saotra << std::endl;
-    saotra.attack("fana");
-    saotra.takeDamage(9);
-    std::cout << saotra << std::endl;
-    saotra.beRepaired(20);
-    std::cout << saotra << std::endl;
-    saotra.takeDamage(100);
-    std::cout << saotra << std::endl;
-    saotra.beRepaired(20);
-    std::cout << saotra << std::endl;
-
-    andria.attack("saotra");
-    andria.attack("saotra");
-    andria.attack("saotra");
-    andria.attack("saotra");
-    andria.attack("saotra");
-    andria.attack("saotra");
-    andria.attack("saotra");
-    andria.attack("saotra");
-    andria.attack("saotra");
-    andria.attack("saotra");
-
-    andria.beRepaired(10);
-    std::cout << andria << std::endl;
+    std::cout << a << std::endl;
+    a.guardGate();
+    a.attack("fana");
+    a.guardGate();
+    a.takeDamage(1000);
+    a.beRepaired(200);
+    std::cout << a << std::endl;
     
     return 0;
 }
