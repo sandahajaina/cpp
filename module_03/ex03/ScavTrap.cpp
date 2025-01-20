@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 10:53:12 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/20 16:07:53 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:05:42 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 ScavTrap::ScavTrap()
 {
-	this->_name = "ScavTrap";
+	this->_name = "Default";
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sranaivo <sranaivo@student.42antananari    +#+  +:+       +#+        */
+/*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:58:32 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/16 13:19:11 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:30:33 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
