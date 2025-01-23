@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 11:37:31 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/23 11:37:36 by sranaivo         ###   ########.fr       */
+/*   Created: 2025/01/22 13:09:28 by sranaivo          #+#    #+#             */
+/*   Updated: 2025/01/23 14:29:54 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
-# include <iostream>
-# include <string>
 # include "Animal.hpp"
+# include "Brain.hpp"
 
-class Cat : public Animal
+class Dog : public Animal
 {
 
 	public:
 
-		Cat();
-		Cat( Cat const & src );
-		~Cat();
+		Dog();
+		Dog( Dog const & src );
+		~Dog();
 
-		Cat &		operator=( Cat const & rhs );
+		Dog &		operator=( Dog const & rhs );
 		void makeSound() const;
+		void	setIdea(const std::string& idea);
+		void showIdeas() const;
 
 	private:
+		Brain* _brain;
 
 };
 
-std::ostream &			operator<<( std::ostream & o, Cat const & i );
+std::ostream &			operator<<( std::ostream & o, Dog const & i );
 
-#endif /* ************************************************************* CAT_H */
+#endif /* ************************************************************* DOG_H */

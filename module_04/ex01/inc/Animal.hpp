@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 11:37:31 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/23 11:37:36 by sranaivo         ###   ########.fr       */
+/*   Created: 2025/01/22 12:54:34 by sranaivo          #+#    #+#             */
+/*   Updated: 2025/01/23 14:48:02 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
 # include <iostream>
 # include <string>
-# include "Animal.hpp"
 
-class Cat : public Animal
+class Animal
 {
 
 	public:
 
-		Cat();
-		Cat( Cat const & src );
-		~Cat();
+		Animal();
+		Animal( Animal const & src );
+		virtual ~Animal();
 
-		Cat &		operator=( Cat const & rhs );
-		void makeSound() const;
+		Animal &		operator=( Animal const & rhs );
+		const std::string&		getType() const;
+		virtual void makeSound() const;
 
-	private:
+	protected:
+		std::string _type;
 
 };
 
-std::ostream &			operator<<( std::ostream & o, Cat const & i );
+std::ostream &			operator<<( std::ostream & o, Animal const & i );
 
-#endif /* ************************************************************* CAT_H */
+#endif /* ********************************************************** ANIMAL_H */

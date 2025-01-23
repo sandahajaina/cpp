@@ -5,17 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 11:37:31 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/23 11:37:36 by sranaivo         ###   ########.fr       */
+/*   Created: 2025/01/23 11:36:57 by sranaivo          #+#    #+#             */
+/*   Updated: 2025/01/23 14:28:09 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAT_HPP
 # define CAT_HPP
 
-# include <iostream>
-# include <string>
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Cat : public Animal
 {
@@ -28,8 +27,11 @@ class Cat : public Animal
 
 		Cat &		operator=( Cat const & rhs );
 		void makeSound() const;
+		void	setIdea(const std::string& idea);
+		void showIdeas() const;
 
 	private:
+		Brain* _brain;
 
 };
 
