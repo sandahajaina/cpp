@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/24 16:41:46 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/24 17:33:55 by sranaivo         ###   ########.fr       */
+/*   Created: 2025/01/24 17:05:52 by sranaivo          #+#    #+#             */
+/*   Updated: 2025/01/24 17:35:09 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/AMateria.hpp"
+#include "../inc/Ice.hpp"
+#include "../inc/ICharacter.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-AMateria::AMateria() {}
+Ice::Ice() : AMateria("ice") {}
 
-AMateria::AMateria(std::string const & type) : _type(type) {}
-
-AMateria::AMateria( const AMateria & src )
+Ice::Ice( const Ice & src ) : AMateria("ice")
 {
 	(void) src;
 }
@@ -30,21 +29,20 @@ AMateria::AMateria( const AMateria & src )
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-AMateria::~AMateria() {}
+Ice::~Ice() {}
 
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-AMateria &				AMateria::operator=( AMateria const & rhs )
+Ice &				Ice::operator=( Ice const & rhs )
 {
 	(void) rhs;
-
 	return *this;
 }
 
-// std::ostream &			operator<<( std::ostream & o, AMateria const & i )
+// std::ostream &			operator<<( std::ostream & o, Ice const & i )
 // {
 // 	//o << "Value = " << i.getValue();
 // 	return o;
@@ -55,20 +53,20 @@ AMateria &				AMateria::operator=( AMateria const & rhs )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void AMateria::use(ICharacter& target)
+AMateria* Ice::clone() const
 {
-	(void) target;
+	return (new Ice(*this));
+}
+
+void Ice::use(ICharacter& target)
+{
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
 
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-
-const std::string& AMateria::getType() const
-{
-	return _type;
-}
 
 
 /* ************************************************************************** */

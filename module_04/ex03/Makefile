@@ -1,5 +1,5 @@
 NAME = interface
-SRCS = src/main.cpp
+SRCS = src/main.cpp src/AMateria.cpp src/Character.cpp src/Cure.cpp src/Ice.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g

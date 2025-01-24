@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/24 16:41:46 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/24 17:33:55 by sranaivo         ###   ########.fr       */
+/*   Created: 2025/01/24 17:20:39 by sranaivo          #+#    #+#             */
+/*   Updated: 2025/01/24 17:34:31 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/AMateria.hpp"
+#include "../inc/Cure.hpp"
+#include "../inc/ICharacter.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-AMateria::AMateria() {}
+Cure::Cure() : AMateria("cure") {}
 
-AMateria::AMateria(std::string const & type) : _type(type) {}
-
-AMateria::AMateria( const AMateria & src )
+Cure::Cure( const Cure & src ) : AMateria("cure")
 {
 	(void) src;
 }
@@ -30,21 +29,20 @@ AMateria::AMateria( const AMateria & src )
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-AMateria::~AMateria() {}
+Cure::~Cure() {}
 
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-AMateria &				AMateria::operator=( AMateria const & rhs )
+Cure &				Cure::operator=( Cure const & rhs )
 {
 	(void) rhs;
-
 	return *this;
 }
 
-// std::ostream &			operator<<( std::ostream & o, AMateria const & i )
+// std::ostream &			operator<<( std::ostream & o, Cure const & i )
 // {
 // 	//o << "Value = " << i.getValue();
 // 	return o;
@@ -55,20 +53,20 @@ AMateria &				AMateria::operator=( AMateria const & rhs )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void AMateria::use(ICharacter& target)
+AMateria* Cure::clone() const
 {
-	(void) target;
+	return (new Cure(*this));
+}
+
+void Cure::use(ICharacter& target)
+{
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }
 
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-
-const std::string& AMateria::getType() const
-{
-	return _type;
-}
 
 
 /* ************************************************************************** */
