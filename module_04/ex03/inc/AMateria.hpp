@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:41:33 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/24 17:05:26 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:12:59 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class AMateria
 		AMateria();
 		AMateria(std::string const & type);
 		AMateria( AMateria const & src );
-		~AMateria();
+		virtual ~AMateria();
 
 		std::string const & getType() const; //Returns the materia type
 		virtual AMateria* clone() const = 0;
@@ -39,6 +39,6 @@ class AMateria
 
 };
 
-std::ostream &			operator<<( std::ostream & o, AMateria const & i );
+// std::ostream &			operator<<( std::ostream & o, AMateria const & i );
 
 #endif /* ******************************************************** AMATERIA_H */

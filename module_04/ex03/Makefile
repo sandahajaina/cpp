@@ -1,4 +1,4 @@
-NAME = interface
+NAME = game
 SRCS = src/main.cpp src/AMateria.cpp src/Character.cpp src/Cure.cpp src/Ice.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXX = c++
@@ -21,6 +21,6 @@ fclean : clean
 re : fclean all
 
 valgrind : all
-	valgrind --leak-check=full ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 .PHONY : all clean fclean re
