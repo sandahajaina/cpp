@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:20:29 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/24 17:26:45 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:57:17 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ class Cure : public AMateria
 
 };
 
-std::ostream &			operator<<( std::ostream & o, Cure const & i );
+// std::ostream &			operator<<( std::ostream & o, Cure const & i );
 
 #endif /* ************************************************************ CURE_H */

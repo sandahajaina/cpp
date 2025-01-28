@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:20:39 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/24 17:34:31 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:37:10 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,6 @@ Cure &				Cure::operator=( Cure const & rhs )
 	(void) rhs;
 	return *this;
 }
-
-// std::ostream &			operator<<( std::ostream & o, Cure const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
 
 
 /*

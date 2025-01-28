@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:41:46 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/24 17:33:55 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:37:23 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,6 @@ AMateria &				AMateria::operator=( AMateria const & rhs )
 
 	return *this;
 }
-
-// std::ostream &			operator<<( std::ostream & o, AMateria const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
 
 
 /*

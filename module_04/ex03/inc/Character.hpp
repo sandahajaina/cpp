@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:33:01 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/27 16:29:37 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:31:28 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ class Character : public ICharacter
 		void use(int idx, ICharacter& target);
 
 	private:
-		// void swapValue(AMateria* a, AMateria* b);
-		// void reorderInventory();
 		static int _inventoryNb;
 		const std::string _name;
 		AMateria* _materias[4];
 		int _nbMateria;
+		void _saveUnequippedMateria(AMateria*);
+		AMateria* _unequippedMateria;
 
 };
 

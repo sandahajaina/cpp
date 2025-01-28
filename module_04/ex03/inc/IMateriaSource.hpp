@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/24 16:22:13 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/28 15:31:14 by sranaivo         ###   ########.fr       */
+/*   Created: 2025/01/28 09:00:10 by sranaivo          #+#    #+#             */
+/*   Updated: 2025/01/28 15:30:09 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
+#ifndef IMATERIASOURCE_HPP
+# define IMATERIASOURCE_HPP
 
 # include <iostream>
 # include <string>
 
 class AMateria;
 
-class ICharacter
+class IMateriaSource
 {
 
 	public:
-		virtual ~ICharacter() {}
-		virtual std::string const & getName() const = 0;
-		virtual void equip(AMateria* m) = 0;
-		virtual void unequip(int idx) = 0;
-		virtual void use(int idx, ICharacter& target) = 0;
-
+		virtual ~IMateriaSource() {}
+		virtual void learnMateria(AMateria*) = 0;
+		virtual AMateria* createMateria(std::string const & type) = 0;
 };
 
-#endif /* ****************************************************** ICHARACTER_H */
+// std::ostream &			operator<<( std::ostream & o, IMateriaSource const & i );
+
+#endif /* ************************************************** IMATERIASOURCE_H */

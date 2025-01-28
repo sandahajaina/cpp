@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:05:59 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/24 17:15:05 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:38:22 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ class Ice : public AMateria
 
 };
 
-std::ostream &			operator<<( std::ostream & o, Ice const & i );
+// std::ostream &			operator<<( std::ostream & o, Ice const & i );
 
 #endif /* ************************************************************* ICE_H */
