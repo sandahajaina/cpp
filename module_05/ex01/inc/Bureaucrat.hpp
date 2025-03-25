@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:24:44 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/03/25 11:03:59 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/03/25 21:36:27 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <iostream>
 # include <string>
 # include <exception>
+
+class Form;
 
 class Bureaucrat
 {
@@ -34,6 +36,8 @@ class Bureaucrat
 
 		void incrementGrade();
 		void decrementGrade();
+
+		void signForm(Form& form);
 
 		class GradeTooHighException : public std::exception
 		{

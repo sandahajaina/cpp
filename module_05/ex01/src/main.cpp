@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:22:23 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/03/25 17:19:36 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/03/25 22:25:43 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,17 @@
 int main()
 {
     {
-        Form form("mariage_form", 5, 20);
+        std::cout << "~~~~~~~~~~~~~~~~~~~~" << '\n';
+        Form form("form_grave", 5, 20);
+        Bureaucrat saotra("Saotra", 30);
+        std::cout << saotra << '\n';
+        std::cout << form << '\n';
+        saotra.signForm(form);
+
+        Bureaucrat sanda("Sanda", 1);
+        std::cout << sanda << '\n';
+        sanda.signForm(form);
+        std::cout << form << '\n';
     }
     
     return  0;

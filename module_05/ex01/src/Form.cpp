@@ -6,11 +6,14 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:33:56 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/03/25 17:17:17 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/03/25 22:21:30 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Form.hpp"
+
+const int Form::_maxGrade = 1;
+const int Form::_minGrade = 150;
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -34,7 +37,12 @@ Form::Form(std::string name, int sign_grade, int execute_grade) :
 	_is_signed(false),
 	_grade_required_to_sign_it(sign_grade),
 	_grade_required_to_execute_it(execute_grade)
-{}
+{
+	if (sign_grade < _maxGrade || execute_grade < _maxGrade)
+		throw GradeTooHighException();
+	else if (sign_grade > _minGrade || execute_grade > _minGrade)
+		throw GradeTooLowException();
+}
 
 
 /*
@@ -60,8 +68,13 @@ Form &				Form::operator=( Form const & rhs )
 
 std::ostream &			operator<<( std::ostream & o, Form const & i )
 {
-	o << i.getName() << ", " << i.getIsSigned() << ", " << i.getGradeRequiredToSignIt() 
-		<< ", " << i.getGradeRequiredToExecuteIt() << std::endl;
+	o << i.getName() << ", " 
+		<< "is signed : "
+		<< i.getIsSigned() << ", " 
+		<< "sign required grade : " 
+		<< i.getGradeRequiredToSignIt() << ", "
+		<< "execute required grade : "
+		<< i.getGradeRequiredToExecuteIt();
 	return o;
 }
 
@@ -85,6 +98,13 @@ const char* Form::GradeTooLowException::what() const throw()
 ** --------------------------------- METHODS ----------------------------------
 */
 
+void Form::beSigned(Bureaucrat& b)
+{
+	if (b.getGrade() > _grade_required_to_sign_it)
+		throw GradeTooLowException();
+	_is_signed = true;
+}
+
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
@@ -94,8 +114,8 @@ const std::string&	Form::getName() const {return _name;}
 
 bool				Form::getIsSigned() const {return _is_signed;}
 
-const int	Form::getGradeRequiredToSignIt() const {return _grade_required_to_sign_it;}
+int	Form::getGradeRequiredToSignIt() const {return _grade_required_to_sign_it;}
 
-const int	Form::getGradeRequiredToExecuteIt() const {return _grade_required_to_execute_it;}
+int	Form::getGradeRequiredToExecuteIt() const {return _grade_required_to_execute_it;}
 
 /* ************************************************************************** */
