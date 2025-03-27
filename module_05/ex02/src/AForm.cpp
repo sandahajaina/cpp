@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:33:56 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/03/27 12:07:45 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:56:33 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Form.hpp"
+#include "../inc/AForm.hpp"
 
-const int Form::_maxGrade = 1;
-const int Form::_minGrade = 150;
+const int AForm::_maxGrade = 1;
+const int AForm::_minGrade = 150;
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Form::Form() : 
+AForm::AForm() : 
 	_is_signed(false),
 	_grade_required_to_sign_it(0),
 	_grade_required_to_execute_it(0)
 {}
 
-Form::Form( const Form & src ) :
+AForm::AForm( const AForm & src ) :
 	_name(src._name),
 	_is_signed(false),
 	_grade_required_to_sign_it(src._grade_required_to_sign_it),
 	_grade_required_to_execute_it(src._grade_required_to_execute_it)
 {}
 
-Form::Form(std::string name, int sign_grade, int execute_grade) :
+AForm::AForm(std::string name, int sign_grade, int execute_grade) :
 	_name(name),
 	_is_signed(false),
 	_grade_required_to_sign_it(sign_grade),
@@ -53,14 +53,14 @@ Form::Form(std::string name, int sign_grade, int execute_grade) :
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Form::~Form() {}
+AForm::~AForm() {}
 
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Form &				Form::operator=( Form const & rhs )
+AForm &				AForm::operator=( AForm const & rhs )
 {
 	if ( this != &rhs )
 	{
@@ -69,7 +69,7 @@ Form &				Form::operator=( Form const & rhs )
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, Form const & i )
+std::ostream &			operator<<( std::ostream & o, AForm const & i )
 {
 	o << i.getName() << ", "
 		<< "is signed : "
@@ -86,12 +86,12 @@ std::ostream &			operator<<( std::ostream & o, Form const & i )
 ** --------------------------------- EXCEPTION --------------------------------
 */
 
-const char* Form::GradeTooHighException::what() const throw()
+const char* AForm::GradeTooHighException::what() const throw()
 {
 	return "Error: Grade too high";
 }
 
-const char* Form::GradeTooLowException::what() const throw()
+const char* AForm::GradeTooLowException::what() const throw()
 {
 	return "Error: Grade too low";
 }
@@ -101,7 +101,7 @@ const char* Form::GradeTooLowException::what() const throw()
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void Form::beSigned(Bureaucrat& b)
+void AForm::beSigned(Bureaucrat& b)
 {
 	if (b.getGrade() > _grade_required_to_sign_it)
 		throw GradeTooLowException();
@@ -113,12 +113,12 @@ void Form::beSigned(Bureaucrat& b)
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-const std::string&	Form::getName() const {return _name;}
+const std::string&	AForm::getName() const {return _name;}
 
-bool				Form::getIsSigned() const {return _is_signed;}
+bool				AForm::getIsSigned() const {return _is_signed;}
 
-int	Form::getGradeRequiredToSignIt() const {return _grade_required_to_sign_it;}
+int	AForm::getGradeRequiredToSignIt() const {return _grade_required_to_sign_it;}
 
-int	Form::getGradeRequiredToExecuteIt() const {return _grade_required_to_execute_it;}
+int	AForm::getGradeRequiredToExecuteIt() const {return _grade_required_to_execute_it;}
 
 /* ************************************************************************** */

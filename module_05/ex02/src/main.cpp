@@ -6,11 +6,11 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:22:23 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/03/27 16:42:24 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:41:59 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Form.hpp"
+#include "../inc/AForm.hpp"
 
 int main()
 {
