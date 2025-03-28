@@ -1,5 +1,5 @@
 NAME = form
-SRCS = src/main.cpp src/Bureaucrat.cpp
+SRCS = src/main.cpp src/Bureaucrat.cpp src/ShrubberyCreationForm.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
