@@ -6,12 +6,12 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:23:15 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/03/27 12:11:32 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/03/29 14:20:45 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Bureaucrat.hpp"
-#include "../inc/Form.hpp"
+#include "../inc/AForm.hpp"
 
 int Bureaucrat::_maxGrade = 1;
 int Bureaucrat::_minGrade = 150;
@@ -78,7 +78,7 @@ void Bureaucrat::decrementGrade()
 	++_grade;
 }
 
-void Bureaucrat::signForm(Form& form)
+void Bureaucrat::signForm(AForm& form)
 {
 	try
 	{
