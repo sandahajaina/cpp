@@ -1,47 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/28 11:34:54 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/03/31 17:17:10 by sranaivo         ###   ########.fr       */
+/*   Created: 2025/03/31 15:08:36 by sranaivo          #+#    #+#             */
+/*   Updated: 2025/03/31 15:12:09 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ShrubberyCreationForm.hpp"
+#include "../inc/PresidentialPardonForm.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("default", 145, 137), _target("default") {}
+PresidentialPardonForm::PresidentialPardonForm() :
+	AForm("default", 25, 5), _target("default") {}
 
-ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & src ) : 
-	AForm("default", 145, 137), _target(src.getTarget()) {}
+PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm & src ) :
+	AForm("default", 25, 5), _target(src._target) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : 
-	AForm("default", 145, 137) ,_target(target) {}
+PresidentialPardonForm::PresidentialPardonForm(const std::string& target) :
+	AForm("default", 25, 5), _target(target) {}
 
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-ShrubberyCreationForm::~ShrubberyCreationForm() {}
+PresidentialPardonForm::~PresidentialPardonForm() {}
 
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationForm const & rhs )
+PresidentialPardonForm &				PresidentialPardonForm::operator=( PresidentialPardonForm const & rhs )
 {
 	return *this;
 }
 
-// std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & i )
+// std::ostream &			operator<<( std::ostream & o, PresidentialPardonForm const & i )
 // {
 // 	//o << "Value = " << i.getValue();
 // 	return o;
@@ -52,18 +53,10 @@ ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationFo
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
-{
-	if (getIsSigned())
-		std::cout << "yeahh" << '\n';
-}
-
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-
-const std::string& ShrubberyCreationForm::getTarget() const {return _target;}
 
 
 /* ************************************************************************** */
