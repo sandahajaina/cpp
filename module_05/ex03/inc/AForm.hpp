@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:34:15 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/01 13:36:48 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/01 15:46:39 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ class AForm
 		void beSigned(Bureaucrat& b);
 
 		virtual void execute(Bureaucrat const & executor) const = 0;
+
+		virtual const std::string& getTarget() const = 0;
 
 		class GradeTooHighException : public std::exception
 		{
