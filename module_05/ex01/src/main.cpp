@@ -51,11 +51,19 @@ int main()
         std::cout << form << '\n';
         saotra.signForm(form);
 
+        std::cout << '\n';
+
         Bureaucrat sanda("Sanda", 1);
         std::cout << sanda << '\n';
         std::cout << form << '\n';
         sanda.signForm(form);
         std::cout << form << '\n';
+
+        std::cout << '\n';
+
+        Bureaucrat fana("fana", 2);
+        fana.signForm(form);
+        sanda.signForm(form);
     }
     
     return  0;

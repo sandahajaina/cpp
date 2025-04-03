@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 14:50:32 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/01 14:49:53 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/03 16:39:17 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,19 @@ RobotomyRequestForm &				RobotomyRequestForm::operator=( RobotomyRequestForm con
 
 void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
+	for (int i = 0; i < 5000000; i++)
+		std::cout << '\a';
+	
 	if (!getIsSigned())
-	{
-		std::cerr << "error: form not signed" << '\n';
-		return;
-	}
+		throw "error: form not signed";
+
 	if (executor.getGrade() > getGradeRequiredToExecuteIt())
-	{
-		std::cerr << "the robotomy failed" << '\n';
 		throw GradeTooLowException();
-	}
+
+	if (std::rand() % 2 != 0)
+		std::cout << _target << " has been robotomized successfully" << '\n';
 	else
-	{
-		std::cout << _target << " has been robotomized successfully 50\% of the time" << '\n';
-	}
+		throw "the robotomy failed";
 }
 
 

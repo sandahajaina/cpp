@@ -103,6 +103,8 @@ const char* Form::GradeTooLowException::what() const throw()
 
 void Form::beSigned(Bureaucrat& b)
 {
+	if (getIsSigned())
+		throw "Error: form already signed";
 	if (b.getGrade() > _grade_required_to_sign_it)
 		throw GradeTooLowException();
 	_is_signed = true;

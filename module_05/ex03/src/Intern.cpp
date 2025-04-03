@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 15:00:03 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/01 15:58:37 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/03 16:44:14 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,9 @@ Intern::~Intern() {}
 
 Intern &				Intern::operator=( Intern const & rhs )
 {
-	//if ( this != &rhs )
-	//{
-		//this->_value = rhs.getValue();
-	//}
 	(void) rhs;
 	return *this;
 }
-
-// std::ostream &			operator<<( std::ostream & o, Intern const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
 
 
 /*
@@ -84,12 +74,15 @@ AForm* Intern::makeForm(const std::string& form_name, const std::string& form_ta
 	switch (form_type)
 	{
 	case 0:
+		std::cout << "Intern creates " << form_name << '\n';
 		return (new ShrubberyCreationForm(form_target));
 		break;
 	case 1:
+		std::cout << "Intern creates " << form_name << '\n';
 		return (new RobotomyRequestForm(form_target));
 		break;
 	case 2:
+		std::cout << "Intern creates " << form_name << '\n';
 		return (new PresidentialPardonForm(form_target));
 		break;
 	

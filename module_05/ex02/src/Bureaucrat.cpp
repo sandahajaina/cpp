@@ -91,16 +91,14 @@ void Bureaucrat::signForm(AForm& form)
 			<< " because -> ";
 		std::cerr << e.what() << '\n';
 	}
-	
+	catch(const char* e)
+	{
+		std::cerr << e << '\n';
+	}
 }
 
 void Bureaucrat::executeForm(const AForm& form) const
 {
-	if (!(form.getIsSigned()))
-	{
-		std::cerr << "error: form not signed" << '\n';
-		return;
-	}
 	try
 	{
 		form.execute(*this);
@@ -111,6 +109,10 @@ void Bureaucrat::executeForm(const AForm& form) const
 		std::cerr << _name << " couldn't execute " << form.getName()
 			<< " because -> ";
 		std::cerr << e.what() << '\n';
+	}
+	catch(const char* e)
+	{
+		std::cerr << e << '\n';
 	}
 }
 
