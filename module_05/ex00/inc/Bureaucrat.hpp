@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:24:44 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/03/25 11:03:59 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:54:49 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ class Bureaucrat
 
 		class GradeTooHighException : public std::exception
 		{
+			GradeTooHighException(const std::string &msg);
 			virtual const char* what() const throw();
+			const std::string _error_message;
 		};
 
 		class GradeTooLowException : public std::exception
@@ -50,7 +52,6 @@ class Bureaucrat
 		int					_grade;
 		static int			_maxGrade;
 		static int			_minGrade;
-
 };
 
 std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i );
