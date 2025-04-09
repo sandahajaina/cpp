@@ -1,6 +1,6 @@
 NAME = form
 SRCS = src/main.cpp src/Bureaucrat.cpp src/AForm.cpp src/ShrubberyCreationForm.cpp \
-		src/RobotomyRequestForm.cpp src/PresidentialPardonForm.cpp
+		src/RobotomyRequestForm.cpp src/PresidentialPardonForm.cpp src/MyException.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98

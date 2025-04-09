@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:22:23 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/09 17:23:59 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/09 22:16:31 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 int main()
 {
     {
+        Bureaucrat sanda("sanda", -2);
+        Bureaucrat saotra("saotra", 180);
+
         Form form("f_258", 50, 0); // grade required to execute it < 1
 
         Form form1("B13", 184, 0); // grade required to sign it > 150

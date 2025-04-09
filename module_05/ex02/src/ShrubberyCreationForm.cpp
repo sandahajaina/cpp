@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 11:34:54 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/09 17:01:23 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/09 23:16:36 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,6 @@ ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationFo
 	return *this;
 }
 
-// std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
-
 
 /*
 ** --------------------------------- METHODS ----------------------------------
@@ -60,15 +54,20 @@ void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 		std::cout << "error: form not signed" << '\n';
 		return;
 	}
-	if (executor.getGrade() > getGradeRequiredToExecuteIt())
-		throw GradeTooLowException();
-	else
+	try
 	{
+		if (executor.getGrade() > getGradeRequiredToExecuteIt())
+			throw GradeTooLowException("Error: the executor's grade is too low");
+
 		std::string filename = _target + "_shrubbery";
 		std::ofstream file;
 		file.open(filename.c_str());
 		file << TREES;
 		file.close();
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << '\n';
 	}
 }
 

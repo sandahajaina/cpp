@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:33:56 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/09 17:25:10 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/09 22:18:23 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ Form::Form(std::string name, int sign_grade, int execute_grade) :
 	try
 	{
 		if (sign_grade < _maxGrade)
-			throw GradeTooHighException("Error: grade required to sign it too high");
+			throw GradeTooHighException("Error: the grade required to sign it is too high");
 		else if (sign_grade > _minGrade)
-			throw GradeTooLowException("Error: grade required to sign it too low");
+			throw GradeTooLowException("Error: the grade required to sign it is too low");
 		if (execute_grade < _maxGrade)
-			throw GradeTooHighException("Error: grade required to execute it too high");
+			throw GradeTooHighException("Error: the grade required to execute it is too high");
 		else if (execute_grade > _minGrade)
-			throw GradeTooLowException("Error: grade required to execute it too low");	
+			throw GradeTooLowException("Error: the grade required to execute it is too low");	
 	}
 	catch (const std::exception& e)
 	{

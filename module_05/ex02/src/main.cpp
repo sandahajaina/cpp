@@ -6,16 +6,18 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:22:23 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/03 16:27:37 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/09 23:39:08 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ShrubberyCreationForm.hpp"
 #include "../inc/RobotomyRequestForm.hpp"
 #include "../inc/PresidentialPardonForm.hpp"
+#include "../inc/Bureaucrat.hpp"
 
 int main()
 {
+    std::srand(std::time(0));
     {
         Bureaucrat saotra("saotra", 150);
         ShrubberyCreationForm shrubbery_form("home");

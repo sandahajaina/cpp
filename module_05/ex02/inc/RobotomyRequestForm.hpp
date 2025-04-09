@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 14:49:55 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/01 14:08:12 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/09 22:39:48 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "AForm.hpp"
 # include <cstdlib>
+# include <ctime>
 
 class RobotomyRequestForm : public AForm
 {

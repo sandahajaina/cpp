@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:23:15 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/09 17:01:23 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/09 22:28:04 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,19 @@ int Bureaucrat::_minGrade = 150;
 
 Bureaucrat::Bureaucrat() {}
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade(grade)
 {
-	if (grade > 150)
-		throw GradeTooLowException();
-	else if (grade < 1)
-		throw GradeTooHighException();
+	try
+	{
+		if (grade > 150)
+			throw GradeTooLowException("Error: grade too low for bureaucrat");
+		else if (grade < 1)
+			throw GradeTooHighException("Error: grade too high for bureaucrat");
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << '\n';
+	}
 }
 
 Bureaucrat::Bureaucrat( const Bureaucrat & src ) : _name(src._name), _grade(src._grade) {}
@@ -66,16 +73,30 @@ std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i )
 
 void Bureaucrat::incrementGrade()
 {
-	if (_grade - 1 < _maxGrade)
-		throw GradeTooHighException();
-	--_grade;
+	try
+	{
+		if (_grade - 1 < _maxGrade)
+			throw GradeTooHighException("Error: cannot increment bureaucrat's grade");
+		--_grade;
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << e.what() << '\n';
+	}
 }
 
 void Bureaucrat::decrementGrade()
 {
-	if (_grade + 1 > _minGrade)
-		throw GradeTooLowException();
-	++_grade;
+	try
+	{
+		if (_grade + 1 > _minGrade)
+			throw GradeTooLowException("Error: cannot decrement bureaucrat's grade");
+		++_grade;
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << e.what() << '\n';
+	}
 }
 
 void Bureaucrat::signForm(AForm& form)
@@ -121,15 +142,11 @@ void Bureaucrat::executeForm(const AForm& form) const
 ** --------------------------------- EXCEPTIONS -------------------------------
 */
 
-const char* Bureaucrat::GradeTooHighException::what() const throw()
-{
-	return "Error: Grade too high";
-}
+Bureaucrat::GradeTooHighException::GradeTooHighException(const char* msg) :
+	MyException(msg) {}
 
-const char* Bureaucrat::GradeTooLowException::what() const throw()
-{
-	return "Error: Grade too low";
-}
+Bureaucrat::GradeTooLowException::GradeTooLowException(const char* msg) :
+	MyException(msg){}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
