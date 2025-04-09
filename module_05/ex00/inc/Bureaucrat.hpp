@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:24:44 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/08 16:54:49 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:01:19 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,38 @@ class Bureaucrat
 
 		Bureaucrat();
 		Bureaucrat( Bureaucrat const & src );
-		Bureaucrat(std::string name, int grade);
+		Bureaucrat(const std::string& name, int grade);
 		~Bureaucrat();
 
+		//overloads
 		Bureaucrat &		operator=( Bureaucrat const & rhs );
 
+		// accessors
 		const std::string& getName() const;
 		int	getGrade() const;
 
+		// methods
 		void incrementGrade();
 		void decrementGrade();
 
 		class GradeTooHighException : public std::exception
 		{
-			GradeTooHighException(const std::string &msg);
-			virtual const char* what() const throw();
-			const std::string _error_message;
+			private:
+				const char* what() const throw();
+				const char* _error_message;
+
+			public:
+				GradeTooHighException(const char *msg);
 		};
 
 		class GradeTooLowException : public std::exception
 		{
-			virtual const char* what() const throw();
+			private:
+				const char* what() const throw();
+				const char* _error_message;
+
+			public:
+				GradeTooLowException(const char *msg);
 		};
 
 	private:

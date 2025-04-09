@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 15:00:03 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/03 16:44:14 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:01:23 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ AForm* Intern::makeForm(const std::string& form_name, const std::string& form_ta
 
 	if (form_type == -1)
 	{
-		std::cerr << "the provided form name does not exist" << '\n';
+		std::cout << "the provided form name does not exist" << '\n';
 		return (NULL);
 	}
 	

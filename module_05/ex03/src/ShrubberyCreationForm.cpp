@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 11:34:54 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/01 14:51:01 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:01:23 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
 	if (!(getIsSigned()))
 	{
-		std::cerr << "error: form not signed" << '\n';
+		std::cout << "error: form not signed" << '\n';
 		return;
 	}
 	if (executor.getGrade() > getGradeRequiredToExecuteIt())

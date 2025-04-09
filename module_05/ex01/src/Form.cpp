@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:33:56 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/03/27 12:07:45 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:25:10 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,21 @@ Form::Form(std::string name, int sign_grade, int execute_grade) :
 	_grade_required_to_sign_it(sign_grade),
 	_grade_required_to_execute_it(execute_grade)
 {
-	if (sign_grade < _maxGrade)
-		throw GradeTooHighException();
-	else if (sign_grade > _minGrade)
-		throw GradeTooLowException();
-	if (execute_grade < _maxGrade)
-		throw GradeTooHighException();
-	else if (execute_grade > _minGrade)
-		throw GradeTooLowException();
+	try
+	{
+		if (sign_grade < _maxGrade)
+			throw GradeTooHighException("Error: grade required to sign it too high");
+		else if (sign_grade > _minGrade)
+			throw GradeTooLowException("Error: grade required to sign it too low");
+		if (execute_grade < _maxGrade)
+			throw GradeTooHighException("Error: grade required to execute it too high");
+		else if (execute_grade > _minGrade)
+			throw GradeTooLowException("Error: grade required to execute it too low");	
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << e.what() << '\n';
+	}
 }
 
 
@@ -86,15 +93,11 @@ std::ostream &			operator<<( std::ostream & o, Form const & i )
 ** --------------------------------- EXCEPTION --------------------------------
 */
 
-const char* Form::GradeTooHighException::what() const throw()
-{
-	return "Error: Grade too high";
-}
+Form::GradeTooHighException::GradeTooHighException(const char* msg) :
+	MyException(msg) {}
 
-const char* Form::GradeTooLowException::what() const throw()
-{
-	return "Error: Grade too low";
-}
+Form::GradeTooLowException::GradeTooLowException(const char* msg) :
+	MyException(msg) {}
 
 
 /*
@@ -106,7 +109,7 @@ void Form::beSigned(Bureaucrat& b)
 	if (getIsSigned())
 		throw "Error: form already signed";
 	if (b.getGrade() > _grade_required_to_sign_it)
-		throw GradeTooLowException();
+		throw GradeTooLowException("Error: the bureaucrat's grade is too low");
 	_is_signed = true;
 }
 

@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 14:50:32 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/01 14:49:53 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:01:23 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src ) :
 	AForm("robotomy request", 72, 45), _target(src._target) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target) :
-	AForm("robotomy request", 72, 54), _target(target) {}
+	AForm("robotomy request", 72, 45), _target(target) {}
 
 
 /*
@@ -57,12 +57,12 @@ void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
 	if (!getIsSigned())
 	{
-		std::cerr << "error: form not signed" << '\n';
+		std::cout << "error: form not signed" << '\n';
 		return;
 	}
 	if (executor.getGrade() > getGradeRequiredToExecuteIt())
 	{
-		std::cerr << "the robotomy failed" << '\n';
+		std::cout << "the robotomy failed" << '\n';
 		throw GradeTooLowException();
 	}
 	else

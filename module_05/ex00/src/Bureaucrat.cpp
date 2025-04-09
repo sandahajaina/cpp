@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:23:15 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/08 16:58:33 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:52:19 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ int Bureaucrat::_minGrade = 150;
 
 Bureaucrat::Bureaucrat() {}
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade(grade)
 {
 	try
 	{
 		if (grade > 150)
-			throw GradeTooLowException();
+			throw GradeTooLowException("Error: grade too low for bureaucrat");
 		else if (grade < 1)
-			throw GradeTooHighException();
+			throw GradeTooHighException("Error: grade too high for bureaucrat");
 	}
 	catch(const std::exception& e)
 	{
@@ -72,16 +72,30 @@ std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i )
 
 void Bureaucrat::incrementGrade()
 {
-	if (_grade - 1 < _maxGrade)
-		throw GradeTooHighException();
-	--_grade;
+	try
+	{
+		if (_grade - 1 < _maxGrade)
+			throw GradeTooHighException("Error: cannot increment bureaucrat's grade");
+		--_grade;
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << e.what() << '\n';
+	}
 }
 
 void Bureaucrat::decrementGrade()
 {
-	if (_grade + 1 > _minGrade)
-		throw GradeTooLowException();
-	++_grade;
+	try
+	{
+		if (_grade + 1 > _minGrade)
+			throw GradeTooLowException("Error: cannot decrement bureaucrat's grade");
+		++_grade;
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << e.what() << '\n';
+	}
 }
 
 
@@ -89,17 +103,20 @@ void Bureaucrat::decrementGrade()
 ** --------------------------------- EXCEPTIONS --------------------------------
 */
 
-Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string& msg) :
-	Bureaucrat::GradeTooHighException::_error_message(msg){}
+Bureaucrat::GradeTooHighException::GradeTooHighException(const char* msg) :
+	_error_message(msg){}
+
+Bureaucrat::GradeTooLowException::GradeTooLowException(const char* msg) :
+	_error_message(msg){}
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "Error: Grade too high";
+	return _error_message;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "Error: Grade too low";
+	return _error_message;
 }
 
 /*

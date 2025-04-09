@@ -6,16 +6,14 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:24:44 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/03/25 21:36:27 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:59:54 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include <iostream>
-# include <string>
-# include <exception>
+# include "MyException.hpp"
 
 class Form;
 
@@ -26,27 +24,31 @@ class Bureaucrat
 
 		Bureaucrat();
 		Bureaucrat( Bureaucrat const & src );
-		Bureaucrat(std::string name, int grade);
+		Bureaucrat( const std::string& name, int grade);
 		~Bureaucrat();
 
+		//overloads
 		Bureaucrat &		operator=( Bureaucrat const & rhs );
 
+		// accessors
 		const std::string& getName() const;
 		int	getGrade() const;
 
+		// methods
 		void incrementGrade();
 		void decrementGrade();
-
 		void signForm(Form& form);
 
-		class GradeTooHighException : public std::exception
+		class GradeTooHighException : public MyException
 		{
-			virtual const char* what() const throw();
+			public:
+				GradeTooHighException(const char* msg);
 		};
 
-		class GradeTooLowException : public std::exception
+		class GradeTooLowException : public MyException
 		{
-			virtual const char* what() const throw();
+			public:
+				GradeTooLowException(const char *msg);
 		};
 
 	private:

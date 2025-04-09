@@ -6,16 +6,13 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:34:15 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/03/25 21:00:58 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:07:45 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
 # define FORM_HPP
 
-# include <iostream>
-# include <string>
-# include <exception>
 # include "Bureaucrat.hpp"
 
 class Form
@@ -37,14 +34,16 @@ class Form
 
 		void beSigned(Bureaucrat& b);
 
-		class GradeTooHighException : public std::exception
+		class GradeTooHighException : public MyException
 		{
-			virtual const char* what() const throw();
+			public:
+				GradeTooHighException(const char* msg);
 		};
 
-		class GradeTooLowException : public std::exception
+		class GradeTooLowException : public MyException
 		{
-			virtual const char* what() const throw();
+			public:
+				GradeTooLowException(const char* msg);
 		};
 
 	private:
