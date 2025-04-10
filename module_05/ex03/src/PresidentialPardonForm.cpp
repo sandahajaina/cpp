@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 15:08:36 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/09 17:01:23 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:42:28 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 */
 
 PresidentialPardonForm::PresidentialPardonForm() :
-	AForm("presidential pardon", 25, 5), _target("default") {}
+	AForm("presidential pardon", 25, 5, "default") {}
 
 PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm & src ) :
-	AForm("presidential pardon", 25, 5), _target(src._target) {}
+	AForm("presidential pardon", 25, 5, src.getTarget()) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string& target) :
-	AForm("presidential pardon", 25, 5), _target(target) {}
+	AForm("presidential pardon", 25, 5, target) {}
 
 
 /*
@@ -43,12 +43,6 @@ PresidentialPardonForm &				PresidentialPardonForm::operator=( PresidentialPardo
 	return *this;
 }
 
-// std::ostream &			operator<<( std::ostream & o, PresidentialPardonForm const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
-
 
 /*
 ** --------------------------------- METHODS ----------------------------------
@@ -59,21 +53,19 @@ void PresidentialPardonForm::execute(Bureaucrat const& executor) const
 {
 	if (!getIsSigned())
 	{
-		std::cout << "error: form not signed" << '\n';
+		std::cout << "Error: form not signed" << '\n';
 		return;
 	}
 	if (executor.getGrade() > getGradeRequiredToExecuteIt())
-		throw GradeTooLowException();
-	else
-		std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << '\n';
+		throw GradeTooLowException("Error: the executor's grade is too low");
+
+	std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox" << '\n';
 }
 
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-
-const std::string& PresidentialPardonForm::getTarget() const {return _target;}
 
 
 /* ************************************************************************** */

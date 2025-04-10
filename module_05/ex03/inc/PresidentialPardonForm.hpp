@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 15:06:34 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/01 14:32:49 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:42:42 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,7 @@ class PresidentialPardonForm : public AForm
 
 		void execute(Bureaucrat const& executor) const;
 
-		const std::string& getTarget() const;
-
-		PresidentialPardonForm &		operator=( PresidentialPardonForm const & rhs );
-
-	private:
-		const std::string _target;
+		PresidentialPardonForm &		operator=( PresidentialPardonForm const & rhs );		
 
 };
 

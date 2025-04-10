@@ -1,43 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
+/*   MyException.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/31 15:08:36 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/10 12:42:28 by sranaivo         ###   ########.fr       */
+/*   Created: 2025/04/09 16:19:07 by sranaivo          #+#    #+#             */
+/*   Updated: 2025/04/09 16:46:18 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/PresidentialPardonForm.hpp"
+#include "../inc/MyException.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-PresidentialPardonForm::PresidentialPardonForm() :
-	AForm("presidential pardon", 25, 5, "default") {}
+MyException::MyException() {}
 
-PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm & src ) :
-	AForm("presidential pardon", 25, 5, src.getTarget()) {}
+MyException::MyException( const MyException & src ) { (void) src;}
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string& target) :
-	AForm("presidential pardon", 25, 5, target) {}
+MyException::MyException(const char* msg) : _error_message(msg) {}
 
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-PresidentialPardonForm::~PresidentialPardonForm() {}
+MyException::~MyException() throw() {}
 
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-PresidentialPardonForm &				PresidentialPardonForm::operator=( PresidentialPardonForm const & rhs )
+MyException &				MyException::operator=( MyException const & rhs )
 {
 	(void) rhs;
 	return *this;
@@ -48,18 +45,9 @@ PresidentialPardonForm &				PresidentialPardonForm::operator=( PresidentialPardo
 ** --------------------------------- METHODS ----------------------------------
 */
 
-
-void PresidentialPardonForm::execute(Bureaucrat const& executor) const
+const char* MyException::what() const throw()
 {
-	if (!getIsSigned())
-	{
-		std::cout << "Error: form not signed" << '\n';
-		return;
-	}
-	if (executor.getGrade() > getGradeRequiredToExecuteIt())
-		throw GradeTooLowException("Error: the executor's grade is too low");
-
-	std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox" << '\n';
+	return _error_message;
 }
 
 

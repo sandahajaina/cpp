@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:33:56 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/09 23:01:25 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:56:59 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ AForm::AForm( const AForm & src ) :
 	_grade_required_to_execute_it(src._grade_required_to_execute_it)
 {}
 
-AForm::AForm(std::string name, int sign_grade, int execute_grade) :
+AForm::AForm(std::string name, int sign_grade, int execute_grade, std::string target) :
 	_name(name),
 	_is_signed(false),
 	_grade_required_to_sign_it(sign_grade),
-	_grade_required_to_execute_it(execute_grade)
+	_grade_required_to_execute_it(execute_grade),
+	_target(target)
 {
 	try
 	{
@@ -125,5 +126,7 @@ bool				AForm::getIsSigned() const {return _is_signed;}
 int	AForm::getGradeRequiredToSignIt() const {return _grade_required_to_sign_it;}
 
 int	AForm::getGradeRequiredToExecuteIt() const {return _grade_required_to_execute_it;}
+
+const std::string& AForm::getTarget() const {return _target;}
 
 /* ************************************************************************** */

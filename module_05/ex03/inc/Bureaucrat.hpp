@@ -6,16 +6,14 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:24:44 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/01 11:43:45 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:16:10 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include <iostream>
-# include <string>
-# include <exception>
+# include "MyException.hpp"
 
 class AForm;
 

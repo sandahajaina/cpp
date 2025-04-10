@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 11:34:54 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/09 17:01:23 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:46:36 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("shrubbery creation", 145, 137), _target("default") {}
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("shrubbery creation", 145, 137, "default") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & src ) : 
-	AForm("shrubbery creation", 145, 137), _target(src.getTarget()) {}
+	AForm("shrubbery creation", 145, 137, src.getTarget()) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : 
-	AForm("shrubbery creation", 145, 137) ,_target(target) {}
+	AForm("shrubbery creation", 145, 137, target) {}
 
 
 /*
@@ -42,12 +42,6 @@ ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationFo
 	return *this;
 }
 
-// std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
-
 
 /*
 ** --------------------------------- METHODS ----------------------------------
@@ -57,27 +51,26 @@ void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
 	if (!(getIsSigned()))
 	{
-		std::cout << "error: form not signed" << '\n';
+		std::cout << "Error: form not signed" << '\n';
 		return;
 	}
+
 	if (executor.getGrade() > getGradeRequiredToExecuteIt())
-		throw GradeTooLowException();
-	else
+		throw GradeTooLowException("Error: the executor's grade is too low");
+	std::string filename = getTarget() + "_shrubbery";
+	std::ofstream file(filename.c_str());
+	if (file.is_open())
 	{
-		std::string filename = _target + "_shrubbery";
-		std::ofstream file;
-		file.open(filename.c_str());
 		file << TREES;
 		file.close();
 	}
+	else throw "Error: Unable to open file";
 }
 
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-
-const std::string& ShrubberyCreationForm::getTarget() const {return _target;}
 
 
 /* ************************************************************************** */

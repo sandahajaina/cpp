@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 14:50:32 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/09 23:50:11 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:44:55 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("robotomy request", 72, 45), _target("default") {}
+RobotomyRequestForm::RobotomyRequestForm() : AForm("robotomy request", 72, 45, "default") {}
 
 RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src ) :
-	AForm("robotomy request", 72, 45), _target(src._target) {}
+	AForm("robotomy request", 72, 45, src.getTarget()) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target) :
-	AForm("robotomy request", 72, 45), _target(target) {}
+	AForm("robotomy request", 72, 45, target) {}
 
 
 /*
@@ -53,7 +53,7 @@ void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 		std::cout << '\a';
 	
 	if (!getIsSigned())
-		throw "error: form not signed";
+		throw "Error: form not signed";
 
 	try
 	{
@@ -61,13 +61,13 @@ void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 			throw GradeTooLowException("Error: the executor's grade is too low");
 
 		if (std::rand() % 2 != 0)
-			std::cout << _target << " has been robotomized successfully" << '\n';
+			std::cout << getTarget() << " has been robotomized successfully" << '\n';
 		else
 			throw "the robotomy failed";
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << '\n';
 	}
 	catch(const char* e)
 	{
@@ -79,12 +79,6 @@ void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-
-
-const std::string& RobotomyRequestForm::getTarget() const
-{
-	return _target;
-}
 
 
 /* ************************************************************************** */

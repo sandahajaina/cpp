@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:33:56 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/03/27 16:56:33 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:40:19 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,28 @@ AForm::AForm( const AForm & src ) :
 	_grade_required_to_execute_it(src._grade_required_to_execute_it)
 {}
 
-AForm::AForm(std::string name, int sign_grade, int execute_grade) :
+AForm::AForm(std::string name, int sign_grade, int execute_grade, std::string target) :
 	_name(name),
 	_is_signed(false),
 	_grade_required_to_sign_it(sign_grade),
-	_grade_required_to_execute_it(execute_grade)
+	_grade_required_to_execute_it(execute_grade),
+	_target(target)
 {
-	if (sign_grade < _maxGrade)
-		throw GradeTooHighException();
-	else if (sign_grade > _minGrade)
-		throw GradeTooLowException();
-	if (execute_grade < _maxGrade)
-		throw GradeTooHighException();
-	else if (execute_grade > _minGrade)
-		throw GradeTooLowException();
+	try
+	{
+		if (sign_grade < _maxGrade)
+			throw GradeTooHighException("Error: the grade required to sign it is too high");
+		else if (sign_grade > _minGrade)
+			throw GradeTooLowException("Error: the grade required to sign it is too low");
+		if (execute_grade < _maxGrade)
+			throw GradeTooHighException("Error: the grade required to execute it is too high");
+		else if (execute_grade > _minGrade)
+			throw GradeTooLowException("Error: the grade required to execute it is too low");	
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << e.what() << '\n';
+	}
 }
 
 
@@ -86,15 +94,11 @@ std::ostream &			operator<<( std::ostream & o, AForm const & i )
 ** --------------------------------- EXCEPTION --------------------------------
 */
 
-const char* AForm::GradeTooHighException::what() const throw()
-{
-	return "Error: Grade too high";
-}
+AForm::GradeTooHighException::GradeTooHighException(const char* msg) :
+	MyException(msg) {}
 
-const char* AForm::GradeTooLowException::what() const throw()
-{
-	return "Error: Grade too low";
-}
+AForm::GradeTooLowException::GradeTooLowException(const char* msg) :
+	MyException(msg) {}
 
 
 /*
@@ -103,8 +107,10 @@ const char* AForm::GradeTooLowException::what() const throw()
 
 void AForm::beSigned(Bureaucrat& b)
 {
+	if (getIsSigned())
+		throw "Error: form already signed";
 	if (b.getGrade() > _grade_required_to_sign_it)
-		throw GradeTooLowException();
+		throw GradeTooLowException("Error: the bureaucrat's grade is too low");
 	_is_signed = true;
 }
 
@@ -120,5 +126,7 @@ bool				AForm::getIsSigned() const {return _is_signed;}
 int	AForm::getGradeRequiredToSignIt() const {return _grade_required_to_sign_it;}
 
 int	AForm::getGradeRequiredToExecuteIt() const {return _grade_required_to_execute_it;}
+
+const std::string& AForm::getTarget() const {return _target;}
 
 /* ************************************************************************** */

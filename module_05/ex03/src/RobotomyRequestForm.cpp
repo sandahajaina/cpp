@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 14:50:32 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/09 17:01:23 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:44:55 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("robotomy request", 72, 45), _target("default") {}
+RobotomyRequestForm::RobotomyRequestForm() : AForm("robotomy request", 72, 45, "default") {}
 
 RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src ) :
-	AForm("robotomy request", 72, 45), _target(src._target) {}
+	AForm("robotomy request", 72, 45, src.getTarget()) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target) :
-	AForm("robotomy request", 72, 45), _target(target) {}
+	AForm("robotomy request", 72, 45, target) {}
 
 
 /*
@@ -42,12 +42,6 @@ RobotomyRequestForm &				RobotomyRequestForm::operator=( RobotomyRequestForm con
 	return *this;
 }
 
-// std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
-
 
 /*
 ** --------------------------------- METHODS ----------------------------------
@@ -55,19 +49,29 @@ RobotomyRequestForm &				RobotomyRequestForm::operator=( RobotomyRequestForm con
 
 void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
+	for (int i = 0; i < 5000000; i++)
+		std::cout << '\a';
+	
 	if (!getIsSigned())
+		throw "Error: form not signed";
+
+	try
 	{
-		std::cout << "error: form not signed" << '\n';
-		return;
+		if (executor.getGrade() > getGradeRequiredToExecuteIt())
+			throw GradeTooLowException("Error: the executor's grade is too low");
+
+		if (std::rand() % 2 != 0)
+			std::cout << getTarget() << " has been robotomized successfully" << '\n';
+		else
+			throw "the robotomy failed";
 	}
-	if (executor.getGrade() > getGradeRequiredToExecuteIt())
+	catch(const std::exception& e)
 	{
-		std::cout << "the robotomy failed" << '\n';
-		throw GradeTooLowException();
+		std::cout << e.what() << '\n';
 	}
-	else
+	catch(const char* e)
 	{
-		std::cout << _target << " has been robotomized successfully 50\% of the time" << '\n';
+		std::cout << e << '\n';
 	}
 }
 
@@ -75,12 +79,6 @@ void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-
-
-const std::string& RobotomyRequestForm::getTarget() const
-{
-	return _target;
-}
 
 
 /* ************************************************************************** */
