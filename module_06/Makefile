@@ -1,5 +1,5 @@
-NAME = 
-SRCS = 
+NAME = convert
+SRCS = src/ScalarConverter.cpp src/main.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98

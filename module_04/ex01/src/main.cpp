@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:48:21 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/01/23 14:52:52 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/22 08:07:13 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,13 @@ int main()
         println("~~~~~~~~~~~~~~~");
     }
     {
+        std::cout << "*******************";
+        Cat* cat = new Cat();
+        Dog* dog = new Dog();
+        cat = dog;
+    }
+
+    {
         println("=== Brain test ===");
         Cat saotra;
         Dog fana;
@@ -73,5 +80,6 @@ int main()
 
         println("=== Destructor ===");
     }
+
     return 0;
 }
