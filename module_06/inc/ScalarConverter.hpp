@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 10:49:40 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/24 01:55:21 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/24 02:57:11 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ class ScalarConverter
         ScalarConverter(/* args */);
         ScalarConverter(const ScalarConverter & src);
         ScalarConverter& operator=(const ScalarConverter & rhs);
-        // void display() const;
+        ~ScalarConverter();
 
     public:
-        ~ScalarConverter();
         static void convert(const std::string&);
 };
 

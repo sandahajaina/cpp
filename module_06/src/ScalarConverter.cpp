@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 10:13:57 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/24 02:55:56 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/24 02:56:46 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,6 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& rhs)
     (void) rhs;
     return *this;
 }
-
-// void ScalarConverter::display() const
-// {
-    
-// }
 
 static bool isChar(const std::string& arg)
 {
