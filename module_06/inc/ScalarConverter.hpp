@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 10:49:40 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/24 02:57:11 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:50:58 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <string>
 #include <cstdlib>
 #include <limits>
+#include <iomanip>
+#include <cmath>
 
 class ScalarConverter
 {

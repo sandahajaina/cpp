@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 10:13:57 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/24 02:56:46 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/24 10:40:09 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,67 @@ static bool isDouble(const std::string& arg)
 }
 
 void ScalarConverter::convert(const std::string& arg)
-{   
+{
+    std::cout << std::fixed << std::setprecision(1);
+
     if (isChar(arg))
     {
-        std::cout << "char\n";
+        char c = arg[0];
+        if (c >= 32 && c < 127)
+            std::cout << "char: '" << c << "'\n";
+        else
+            std::cout << "char: Non displayable" << '\n';
+        std::cout << "int: " << static_cast<int>(c) << std::endl; 
+        std::cout << "float: " << static_cast<float>(c) <<'f' << std::endl; 
+        std::cout << "double: " << static_cast<double>(c) << std::endl; 
     }
     else if (isInt(arg))
     {
-        std::cout << "int\n";
+        int n = atoi(arg.c_str());
+        if (n >= 32 && n < 127)
+            std::cout << "char: '" << static_cast<char>(n) << "'\n";
+        else if (n >= 0 && n < 32)
+            std::cout << "char: Non displayable\n";
+        else
+            std::cout << "char: impossible" << std::endl;
+        
+        std::cout << "int: " << n << std::endl; 
+        std::cout << "float: " << static_cast<float>(n) <<'f' << std::endl; 
+        std::cout << "double: " << static_cast<double>(n) << std::endl;        
     }
     else if (isFloat(arg))
     {
-        std::cout << "float\n";
+        float f = strtof(arg.c_str(), NULL);
+        if (std::isnan(f) || std::isinf(f))
+            std::cout << "char: impossible\nint: impossible\n";
+        else if (f >= 32 && f <= 126)
+        {
+            std::cout << "char: " << "'" << static_cast<char>(f) << "'\n";
+            std::cout << "int: " << static_cast<int>(f) << std::endl;
+        }
+        else
+            std::cout << "char: Non displayable\nint: " << static_cast<int>(f) << '\n';
+        std::cout << "float: " << f << "f\n";
+        std::cout << "double: " << static_cast<double>(f) << std::endl;
     }
     else if (isDouble(arg))
     {
-        std::cout << "double\n";
+        double d = strtod(arg.c_str(), NULL);
+        if (std::isnan(d) || std::isinf(d))
+			std::cout << "char: impossible\nint: impossible\n";
+        else if (d >= 32 && d <= 126)
+            std::cout << "char: '" << static_cast<char>(d) << "'\n";
+        else
+            std::cout << "char: non displayable\nint: " << static_cast<int>(d) << '\n';
+        
+        std::cout << "float: " << static_cast<float>(d) << "f\n";
+        std::cout << "double: " << d << '\n';
     }
-
-    // std::cout << "char: " << "value" << std::endl;
-    // std::cout << "int: " << "value" << std::endl; 
-    // std::cout << "float: " << "value" << std::endl; 
-    // std::cout << "double: " << "value" << std::endl; 
+    else
+    {
+        std::cout << "char: " << "impossible" << std::endl;
+        std::cout << "int: " << "impossible" << std::endl;
+        std::cout << "float: " << "impossible" << std::endl;
+        std::cout << "double: " << "impossible" << std::endl;
+    }
 }
