@@ -1,4 +1,4 @@
-NAME = Serialization
+NAME = serialization
 SRCS = src/main.cpp src/Serializer.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXX = c++

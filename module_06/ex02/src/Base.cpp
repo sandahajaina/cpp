@@ -1,25 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   A.hpp                                              :+:      :+:    :+:   */
+/*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/29 11:47:46 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/29 15:08:51 by sranaivo         ###   ########.fr       */
+/*   Created: 2025/04/29 15:06:47 by sranaivo          #+#    #+#             */
+/*   Updated: 2025/04/29 15:34:15 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef A_HPP
-#define A_HPP
+#include "../inc/Base.hpp"
 
-#include "Base.hpp"
-
-class A : public Base
-{
-    public :
-        A();
-        ~A();
-};
-
-#endif
+Base::~Base() {}

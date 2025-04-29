@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   A.hpp                                              :+:      :+:    :+:   */
+/*   B.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:47:46 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/29 15:08:51 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:02:12 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef A_HPP
-#define A_HPP
+#ifndef B_HPP
+#define B_HPP
 
 #include "Base.hpp"
 
-class A : public Base
+class B : public Base
 {
     public :
-        A();
-        ~A();
+        B();
+        ~B();
 };
 
 #endif
