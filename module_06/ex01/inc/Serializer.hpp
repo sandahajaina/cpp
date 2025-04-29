@@ -6,20 +6,22 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 14:54:22 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/28 15:29:18 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/29 11:19:47 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERIALIZER_HPP
-#define SESERIALIZER_HPP
+#define SERIALIZER_HPP
 
 #include <iostream>
-#include <cstdint>
+#include <string>
+
+typedef unsigned long uintptr_t;
 
 typedef struct s_data
 {
-    int x;
-    int y;
+    int         age;
+    std::string name;
 } Data;
 
 class Serializer
@@ -34,14 +36,6 @@ class Serializer
         Serializer& operator=(Serializer const & rhs);
         ~Serializer();
 };
-
-Serializer::Serializer(/* args */)
-{
-}
-
-Serializer::~Serializer()
-{
-}
 
 
 #endif
