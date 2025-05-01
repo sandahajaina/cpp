@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:43:47 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/04/29 15:19:36 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/04/30 17:02:30 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,5 @@ class Base
     public:
         virtual ~Base();
 };
-
-Base * generate(void);
-void identify(Base* p);
-void identify(Base& p);
 
 #endif
