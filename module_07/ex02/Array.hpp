@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 16:48:25 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/05/02 17:27:58 by sranaivo         ###   ########.fr       */
+/*   Created: 2025/05/02 17:40:08 by sranaivo          #+#    #+#             */
+/*   Updated: 2025/05/02 17:46:44 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 
 #include <iostream>
 
-template <typename T, typename F>
-void iter(T* array, size_t len, F function)
+template <class T>
+class Array
 {
-    for (size_t i = 0; i < len; i++)
-        function(array[i]);
-}
+    public:
+        Array();
+
+    private:
+        T* _elements;
+};
 
 #endif
