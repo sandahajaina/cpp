@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 17:40:08 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/05/04 21:50:39 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/05/04 22:34:29 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include <exception>
+#include <ctime>
+#include <cstdlib>
 
 template <class T>
 class Array
