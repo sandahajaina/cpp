@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 00:52:54 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/05/07 15:57:27 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:59:36 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int main()
 
     for (size_t i = 0; i < 50; i++)
     {
-        int x = rand() % 50;
+        int x = rand() % 100;
         lst.push_back(x);
     }
 
-    int to_find = rand() % 50;
+    int to_find = rand() % 100;
 
     try
     {
