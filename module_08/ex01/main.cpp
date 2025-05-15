@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 11:40:58 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/05/10 12:01:19 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:09:07 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main()
     srand(time(0));
 
     {
-        std::cout << "~~~Subject's test~~~\n";
+        std::cout << "~~~~~~~~~~~~~~~~~~~~\n";
         Span sp = Span(5);
         sp.addNumber(6);
         sp.addNumber(3);
