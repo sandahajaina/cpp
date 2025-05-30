@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:52:09 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/05/23 12:28:12 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/05/30 15:10:06 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ class BitcoinExchange
         BitcoinExchange& operator=(const BitcoinExchange&);
         ~BitcoinExchange();
 
+        std::map<std::string, float> getDatabase();
         void readDataBase(const std::string&);
         
     private:
-        std::map<std::string, double> _dataBase;
+        std::map<std::string, float> _database;
 };
