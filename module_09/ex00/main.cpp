@@ -6,20 +6,26 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:51:52 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/05/30 15:12:33 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/06/01 11:30:10 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-int main()
+int main(int ac, char **av)
 {
-    BitcoinExchange bitcoin;
-    bitcoin.readDataBase("data.csv");
+    if (ac == 2)
+    {
+        BitcoinExchange bitcoin;
+        bitcoin.loadDataBase("data.csv");
 
-    std::map<std::string, float> tmp = bitcoin.getDatabase();
+        std::map<std::string, float> tmp = bitcoin.getDatabase();
 
-    std::cout << tmp["2018-06-24"] << '\n';
-
+        bitcoin.execute(av[1]);
+    }
+    else
+    {
+        std::cout << "Error: could not open file\n";
+    }
     return 0;
 }

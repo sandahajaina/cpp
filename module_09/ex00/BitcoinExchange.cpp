@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:52:09 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/05/30 15:29:11 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/06/01 12:05:44 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ std::map<std::string, float> BitcoinExchange::getDatabase()
     return _database;
 }
 
-void BitcoinExchange::readDataBase(const std::string& filename)
+void BitcoinExchange::loadDataBase(const std::string& filename)
 {
     std::ifstream file(filename.c_str());
     std::string line;
@@ -63,5 +63,25 @@ void BitcoinExchange::readDataBase(const std::string& filename)
     } else {
         std::cout << "Error: could not open file: " << filename << '\n';
         return ;
+    }
+}
+
+void BitcoinExchange::execute(const std::string& filename)
+{
+    std::ifstream input(filename.c_str());
+    if (input.is_open())
+    {
+        std::string line;
+        std::getline(input, line);
+        if (line.compare("date | value") != 0)
+        {
+            std::cout << "Error: bad header\n";
+            return;
+        }
+    }
+    else
+    {
+        std::cout << "Error: could not open file: " << filename << '\n';
+        return;
     }
 }
