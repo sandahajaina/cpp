@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:52:09 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/06/01 11:24:40 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/06/10 15:48:26 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ class BitcoinExchange
     private:
         std::map<std::string, float> _database;
         bool isValideDate(const std::string&);
+        std::string trim(const std::string&);
 };

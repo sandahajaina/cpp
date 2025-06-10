@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:52:09 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/06/01 12:05:44 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/06/10 16:31:17 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,20 @@ void BitcoinExchange::execute(const std::string& filename)
         if (line.compare("date | value") != 0)
         {
             std::cout << "Error: bad header\n";
-            return;
+            return; 
+        }
+        while (std::getline(input, line))
+        {
+            std::stringstream ss(line);
+            std::string date, sep, value;
+
+            if (!std::getline(ss, date, ',') || !std::getline(ss, value))
+            {
+                std::cout << "Error: bad input => " << line << '\n';
+			    continue;
+            }
+
+            
         }
     }
     else
@@ -84,4 +97,14 @@ void BitcoinExchange::execute(const std::string& filename)
         std::cout << "Error: could not open file: " << filename << '\n';
         return;
     }
+}
+
+std::string BitcoinExchange::trim(const std::string& str)
+{
+    size_t start = str.find_first_not_of(" \t");
+    size_t end = str.find_last_not_of(" \t");
+
+    if (start == std::string::npos || end == std::string::npos)
+        return "";
+    return str.substr(start, end - start + 1);
 }
