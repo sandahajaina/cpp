@@ -6,14 +6,11 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:52:09 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/06/10 16:31:17 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/06/12 16:35:01 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-#include <sstream>
-#include <fstream>
-#include <string>
 
 BitcoinExchange::BitcoinExchange(/* args */) {}
 
@@ -83,13 +80,57 @@ void BitcoinExchange::execute(const std::string& filename)
             std::stringstream ss(line);
             std::string date, sep, value;
 
-            if (!std::getline(ss, date, ',') || !std::getline(ss, value))
+            if (!std::getline(ss, date, '|') || !std::getline(ss, value))
             {
                 std::cout << "Error: bad input => " << line << '\n';
 			    continue;
             }
 
-            
+            date = trim(date);
+            value = trim(value);
+
+            std::stringstream valStream(value);
+            float btc;
+            valStream >> btc;
+
+            if (valStream.fail())
+            {
+                std::cout << "Error: invalid value => " << value << '\n';
+                continue;
+            }
+            if (btc < 0)
+            {
+                std::cout << "Error: not a positive number.\n";
+                continue;
+            }
+            if (btc > 1000)
+            {
+                std::cout << "Error: too large a number.\n";
+                continue; 
+            }
+
+            if (!isValidDate(date))
+            {
+                std::cout << "Error: invalid date => " << date << '\n';
+                continue;
+            }
+
+            std::map<std::string, float>::const_iterator it = _database.lower_bound(date);
+
+            if (it == _database.end() || it->first != date)
+            {
+                if (it == _database.begin())
+                {
+                    std::cout << "Error: no earlier date found for " << date << '\n';
+                    continue;
+                }
+                --it;
+            }
+
+            float rate = it->second;
+            float result = rate * btc;
+
+            std::cout << date << " => " << btc << " = " << result << '\n';
         }
     }
     else
@@ -107,4 +148,54 @@ std::string BitcoinExchange::trim(const std::string& str)
     if (start == std::string::npos || end == std::string::npos)
         return "";
     return str.substr(start, end - start + 1);
+}
+
+bool BitcoinExchange::isValidDate(const std::string& dateStr)
+{
+    if (dateStr.length() != 10 ||
+        !isdigit(dateStr[0]) || !isdigit(dateStr[1]) || !isdigit(dateStr[2]) || !isdigit(dateStr[3]) ||
+        dateStr[4] != '-' ||
+        !isdigit(dateStr[5]) || !isdigit(dateStr[6]) ||
+        dateStr[7] != '-' ||
+        !isdigit(dateStr[8]) || !isdigit(dateStr[9])) {
+            return false;
+    }
+
+    int year = std::atoi(dateStr.substr(0, 4).c_str());
+    int month = std::atoi(dateStr.substr(5, 2).c_str());
+    int day = std::atoi(dateStr.substr(8, 2).c_str());
+
+    std::tm tm = {};
+
+    tm.tm_year = year - 1900;
+    tm.tm_mon  = month - 1;
+    tm.tm_mday = day;
+    tm.tm_hour = 0;
+    tm.tm_min = 0;
+    tm.tm_sec = 0;
+
+    std::tm tm_copy = tm;
+    std::mktime(&tm_copy);
+
+    bool validDate (tm.tm_year == tm_copy.tm_year &&
+            tm.tm_mon  == tm_copy.tm_mon &&
+            tm.tm_mday == tm_copy.tm_mday);
+
+    if (!validDate)
+        return false;
+
+    std::time_t inputTime = std::mktime(&tm);
+
+    std::time_t now = std::time(0);
+    std::tm* currentTm = std::localtime(&now);
+    currentTm->tm_hour = 0;
+    currentTm->tm_min = 0;
+    currentTm->tm_sec = 0;
+
+    std::time_t currentTime = std::mktime(currentTm);
+
+    if (difftime(inputTime, currentTime) > 0)
+        return false;
+
+    return true;
 }
