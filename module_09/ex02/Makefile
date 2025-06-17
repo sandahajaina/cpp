@@ -1,5 +1,5 @@
-NAME = btc
-SRC = BitcoinExchange.cpp main.cpp
+NAME = PmergeMe
+SRC = main.cpp RPN.cpp
 OBJS = $(SRC:.cpp=.o)
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -19,8 +19,5 @@ fclean : clean
 	rm -f $(NAME)
 
 re : fclean all
-
-valgrind : all
-	valgrind --leak-check=full ./$(NAME) input.txt
 
 .PHONY : all clean fclean re
