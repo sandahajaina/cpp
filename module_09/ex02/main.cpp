@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:29:52 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/07/01 15:27:44 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/07/18 16:28:05 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,55 @@ static void parseInput(int ac, char** av, std::vector<int>& vec, std::deque<int>
     }
 }
 
+void print_vector(std::vector<int> vec)
+{
+    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
+    {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+}
+
+void merge_insert(std::vector<int>& vec)
+{
+    std::vector<int> max;
+    std::vector<int> min;
+
+    for (size_t i = 0; i < vec.size() - 1; i += 2)
+    {
+        max.push_back( (vec[i] > vec[i + 1]) ? vec[i] : vec[i + 1] );
+        min.push_back( (vec[i] < vec[i + 1]) ? vec[i] : vec[i + 1] );
+    }
+    
+    if (vec.size() % 2 != 0)
+        min.push_back(vec[vec.size() - 1]);
+
+    if (max.size() > 1)
+        merge_insert(max);
+
+    print_vector(max);
+    
+    // jachosbsatal
+    
+}
+
 int main(int ac, char** av)
 {
     std::vector<int> vec;
     std::deque<int> deq;
 
     parseInput(ac, av, vec, deq);
+    merge_insert(vec);
 
-    try {
-        std::cout << "Parsed input: ";
-        for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
-            std::cout << *it << " ";
-        }
-        std::cout << std::endl;
-    }
-    catch (std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-        return 1;
-    }
+    // try {
+    //     std::cout << "Parsed input: ";
+    //     for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
+    //         std::cout << *it << " ";
+    //     }
+    //     std::cout << std::endl;
+    // }
+    // catch (std::exception& e) {
+    //     std::cerr << "Error: " << e.what() << std::endl;
+    //     return 1;
+    // }
 }
