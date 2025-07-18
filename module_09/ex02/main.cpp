@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:29:52 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/07/18 16:28:05 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/07/18 17:02:38 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,12 @@ void merge_insert(std::vector<int>& vec)
     }
     
     if (vec.size() % 2 != 0)
-        min.push_back(vec[vec.size() - 1]);
+        max.push_back(vec[vec.size() - 1]);
 
     if (max.size() > 1)
         merge_insert(max);
 
-    print_vector(max);
+    // print_vector(max);
     
     // jachosbsatal
     
