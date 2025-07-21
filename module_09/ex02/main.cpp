@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:29:52 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/07/18 17:02:38 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:42:11 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,13 @@ void merge_insert(std::vector<int>& vec)
     if (max.size() > 1)
         merge_insert(max);
 
-    // print_vector(max);
+    print_vector(max);
+    std::cout << "-- ";
+    print_vector(min);
+    std::cout << "-- \n";
+
     
     // jachosbsatal
-    
 }
 
 int main(int ac, char** av)
