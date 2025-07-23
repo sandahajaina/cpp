@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:29:52 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/07/22 16:26:31 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/07/23 16:52:41 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,43 @@ void print_vector(std::vector<int> vec)
     std::cout << std::endl;
 }
 
+std::vector<int> jacobsthalSequence(int n)
+{
+    std::vector<int> seq;
+    int j0 = 0, j1 = 1;
+
+    if (n == 0)
+        return seq;
+
+    while (true)
+    {
+        int jn = j1 + (2 * j0);
+        if (jn >= n)
+            break;
+        seq.push_back(jn);
+        j0 = j1;
+        j1 = jn;
+    }
+    
+    return seq;
+}
+
+void insertMin(std::vector<int>& max, std::vector<int>& min)
+{
+    std::vector<int> seq = jacobsthalSequence(static_cast<int>(min.size()));
+    
+    for (std::vector<int>::iterator it = seq.begin(); it != seq.end(); ++it)
+    {
+        int i = *it;
+        if (i > static_cast<int>(min.size()))
+            return ;
+        int value = min[i];
+        std::cout<< "i : " << i << '\n';
+        std::vector<int>::iterator pos = std::lower_bound(max.begin(), max.end(), value);
+        max.insert(pos, value);
+    }
+}
+
 void merge_insert(std::vector<int>& vec)
 {
     std::vector<int> max;
@@ -84,15 +121,25 @@ void merge_insert(std::vector<int>& vec)
     if (max.size() > 1)
         merge_insert(max);
 
-    max.insert(max.begin(), min[0]);
-
-    print_vector(max);
-    std::cout << "-- ";
-    print_vector(min);
-    std::cout << "-- \n";
-
+    // std::vector<int> result;
     
-    // jachosbsatal
+    // result.push_back(min[0]);
+
+    // for (size_t i = 0; i < max.size(); i++)
+    // {
+    //     result.push_back(max[i]);
+    // }
+
+    // print_vector(result);
+
+    insertMin(max, min);
+
+    vec = max;
+
+    std::cout << "max: ";
+    print_vector(max);
+    std::cout << "min: ";
+    print_vector(min);
 }
 
 int main(int ac, char** av)
@@ -102,7 +149,8 @@ int main(int ac, char** av)
 
     parseInput(ac, av, vec, deq);
     merge_insert(vec);
-
+    std::cout << "result: ";
+    print_vector(vec);
     // try {
     //     std::cout << "Parsed input: ";
     //     for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
