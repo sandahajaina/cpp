@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:29:52 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/07/24 10:26:06 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/07/25 08:25:01 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,17 @@ std::vector<int> jacobsthalSequence(int n)
         j0 = j1;
         j1 = jn;
     }
+
+    std::vector<bool> seen(n, false);
+
+    for(std::vector<int>::iterator it = seq.begin(); it != seq.end(); ++it)
+        seen[*it] = true;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (!seen[i])
+            seq.push_back(i);
+    }
     
     return seq;
 }
@@ -121,25 +132,7 @@ void merge_insert(std::vector<int>& vec)
     if (max.size() > 1)
         merge_insert(max);
 
-    // std::vector<int> result;
-    
-    // result.push_back(min[0]);
-
-    // for (size_t i = 0; i < max.size(); i++)
-    // {
-    //     result.push_back(max[i]);
-    // }
-
-    // print_vector(result);
-
     insertMin(max, min);
-
-    vec = max;
-
-    std::cout << "max: ";
-    print_vector(max);
-    // std::cout << "min: ";
-    // print_vector(min);
 }
 
 int main(int ac, char** av)
