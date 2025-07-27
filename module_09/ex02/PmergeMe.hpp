@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 07:39:07 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/07/25 16:02:18 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/07/27 21:34:17 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <limits>
 #include <cstdlib>
 #include <string>
+#include <sys/time.h>
 
 std::vector<int> jacobsthalSequence(int n);
 void parseInput(int ac, char** av, std::vector<int>& vec, std::deque<int>& deq);
