@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 07:39:07 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/07/27 21:34:17 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:32:47 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,40 @@
 #include <sys/time.h>
 
 std::vector<int> jacobsthalSequence(int n);
-void parseInput(int ac, char** av, std::vector<int>& vec, std::deque<int>& deq);
+std::deque<int> jacobsthalSequenceDeque(int n);
+bool isValidNumber(const std::string& str);
+void insertMin(std::vector<int>& max, std::vector<int>& min);
+void insertMin(std::deque<int>& max, std::deque<int>& min);
+
+template <typename Container>
+void parseInput(int ac, char** av, Container& vec)
+{
+    std::set<unsigned int> seen;
+
+    for (int i = 1; i < ac; ++i)
+    {
+        std::string token(av[i]);
+
+        if (!isValidNumber(token)) {
+            throw std::invalid_argument("Invalid input: " + token);
+        }
+
+        long value = std::strtol(token.c_str(), NULL, 10);
+        if (value < 0 || value > std::numeric_limits<int>::max()) {
+            throw std::out_of_range("Too large a number: " + token);
+        }
+
+        if (!seen.insert(static_cast<unsigned int>(value)).second) {
+            throw std::runtime_error("Duplicate number: " + token);
+        }
+
+        vec.push_back(static_cast<int>(value));
+    }
+
+    if (vec.empty()){
+        throw std::runtime_error("Error: no valid input provided.");
+    }
+}
 
 template <typename Container>
 void print_vector(Container vec)
@@ -33,22 +66,6 @@ void print_vector(Container vec)
         std::cout << *it << " ";
     }
     std::cout << std::endl;
-}
-
-template <class Container>
-void insertMin(Container& max, Container& min)
-{
-    std::vector<int> seq = jacobsthalSequence(static_cast<int>(min.size()));
-    
-    for (std::vector<int>::iterator it = seq.begin(); it != seq.end(); ++it)
-    {
-        int i = *it;
-        if (i > static_cast<int>(min.size()))
-            return ;
-        int value = min[i];
-        typename Container::iterator pos = std::lower_bound(max.begin(), max.end(), value);
-        max.insert(pos, value);
-    }
 }
 
 template <class Container>

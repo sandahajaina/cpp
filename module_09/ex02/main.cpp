@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:29:52 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/07/27 21:51:57 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:39:59 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,27 @@ int main(int ac, char** av)
 {
     std::vector<int> vec;
     std::deque<int> deq;
+    std::vector<int> cpy;
 
     timeval vStart, vEnd;
     timeval dStart, dEnd;
 
     try
     {
-        parseInput(ac, av, vec, deq);
-
-        std::cout << "Before: ";
-        print_vector(vec);
+        parseInput(ac, av, cpy);
 
         gettimeofday(&vStart, NULL);
+        parseInput(ac, av, vec);
         merge_insert(vec);
         gettimeofday(&vEnd, NULL);
 
         gettimeofday(&dStart, NULL);
+        parseInput(ac, av, deq);
         merge_insert(deq);
         gettimeofday(&dEnd, NULL);
+
+        std::cout << "Before: ";
+        print_vector(cpy);
 
         std::cout << "After: ";
         print_vector(vec);
