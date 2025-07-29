@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:52:09 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/06/12 16:35:01 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/07/29 16:56:55 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,10 @@ void BitcoinExchange::execute(const std::string& filename)
                 std::cout << "Error: invalid value => " << value << '\n';
                 continue;
             }
+
+            if (btc == -0)
+                btc = 0;
+
             if (btc < 0)
             {
                 std::cout << "Error: not a positive number.\n";
