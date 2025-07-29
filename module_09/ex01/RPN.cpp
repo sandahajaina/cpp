@@ -6,16 +6,13 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:13:47 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/06/17 16:11:01 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/07/29 12:02:26 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-RPN::RPN() {}
-RPN::~RPN() {}
-
-void RPN::execute(const std::string& str)
+void execute(const std::string& str, std::stack<int>& _stack)
 {
     int i = -1;
     while (str[++i])
@@ -24,7 +21,7 @@ void RPN::execute(const std::string& str)
         {
             if(isdigit(str[i + 1]))
             {
-                std::cout << "Error: number > 9\n";
+                std::cerr << "Error: number > 9\n";
                 return ;
             }
             else
@@ -36,7 +33,7 @@ void RPN::execute(const std::string& str)
         {
             if (_stack.size() < 2)
             {
-                std::cout << "Error: invalid input\n";
+                std::cerr << "Error: invalid input\n";
                 return ;
             }
             int a = _stack.top();
@@ -50,7 +47,7 @@ void RPN::execute(const std::string& str)
         {
             if (_stack.size() < 2)
             {
-                std::cout << "Error: invalid input\n";
+                std::cerr << "Error: invalid input\n";
                 return ;
             }
             int a = _stack.top();
@@ -64,7 +61,7 @@ void RPN::execute(const std::string& str)
         {
             if (_stack.size() < 2)
             {
-                std::cout << "Error: invalid input\n";
+                std::cerr << "Error: invalid input\n";
                 return ;
             }
             int a = _stack.top();
@@ -78,7 +75,7 @@ void RPN::execute(const std::string& str)
         {
             if (_stack.size() < 2)
             {
-                std::cout << "Error: invalid input\n";
+                std::cerr << "Error: invalid input\n";
                 return ;
             }
             int a = _stack.top();
@@ -86,7 +83,7 @@ void RPN::execute(const std::string& str)
             int b = _stack.top();
             if (a == 0)
             {
-                std::cout << "Error: division by zero\n";
+                std::cerr << "Error: division by zero\n";
                 return;
             }
             _stack.pop();
@@ -99,12 +96,12 @@ void RPN::execute(const std::string& str)
         }
         else
         {
-            std::cout << "Error: invalid input\n";
+            std::cerr << "Error: invalid input\n";
             return;
         }
     }
     if (_stack.size() == 1)
-    {
         std::cout << _stack.top() << '\n';
-    }
+    else
+        std::cerr << "Error: invalid input\n";
 }

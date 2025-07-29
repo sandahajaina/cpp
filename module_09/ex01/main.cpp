@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:09:20 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/06/17 16:07:51 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/07/29 11:50:14 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int main(int ac, char **av)
 {
     if (ac == 2)
     {
-        RPN rpn;
-        rpn.execute(av[1]);
+        std::stack<int> _stack;
+        execute(av[1], _stack);
     }
     else
     {
