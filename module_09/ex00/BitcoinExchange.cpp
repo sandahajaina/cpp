@@ -6,7 +6,7 @@
 /*   By: sranaivo <sranaivo@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:52:09 by sranaivo          #+#    #+#             */
-/*   Updated: 2025/07/29 16:56:55 by sranaivo         ###   ########.fr       */
+/*   Updated: 2025/07/30 17:18:20 by sranaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,16 @@ void BitcoinExchange::execute(const std::string& filename)
             date = trim(date);
             value = trim(value);
 
-            std::stringstream valStream(value);
-            float btc;
-            valStream >> btc;
+            char *pEnd = NULL;
+            float btc = std::strtof(value.c_str(), &pEnd);
 
-            if (valStream.fail())
+            if (!isValidDate(date))
+            {
+                std::cout << "Error: invalid date => " << date << '\n';
+                continue;
+            }
+
+            if (*pEnd)
             {
                 std::cout << "Error: invalid value => " << value << '\n';
                 continue;
@@ -111,12 +116,6 @@ void BitcoinExchange::execute(const std::string& filename)
             {
                 std::cout << "Error: too large a number.\n";
                 continue; 
-            }
-
-            if (!isValidDate(date))
-            {
-                std::cout << "Error: invalid date => " << date << '\n';
-                continue;
             }
 
             std::map<std::string, float>::const_iterator it = _database.lower_bound(date);
